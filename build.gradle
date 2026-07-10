@@ -1,0 +1,32 @@
+ext {
+    jphpVersion = '0.9.3-SNAPSHOT'
+    javaVersion = '1.8'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    group 'org.develnext.jphp'
+    version rootProject.ext.jphpVersion
+
+    sourceCompatibility = rootProject.ext.javaVersion
+    targetCompatibility = rootProject.ext.javaVersion
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    configurations {
+        provided
+    }
+
+    sourceSets {
+        main {
+            compileClasspath += configurations.provided
+            java.srcDirs = ['src-jvm/main/java']
+            resources.srcDirs = ['src-jvm/main/resources']
+        }
+    }
+}

@@ -1,0 +1,7 @@
+dependencies {
+    provided "org.develnext.jphp:jphp-runtime:${rootProject.ext.jphpVersion}"
+    provided "org.develnext.jphp:jphp-core:${rootProject.ext.jphpVersion}"
+    provided project(':jphp-gui-ext')
+
+    compile group: 'com.jfoenix', name: 'jfoenix', version: '1.11.1'
+}

@@ -1,0 +1,5 @@
+dependencies {
+    provided "org.develnext.jphp:jphp-runtime:${rootProject.ext.jphpVersion}"
+    provided "org.develnext.jphp:jphp-core:${rootProject.ext.jphpVersion}"
+    provided "org.develnext.jphp:jphp-graphic-ext:${rootProject.ext.jphpVersion}"
+}

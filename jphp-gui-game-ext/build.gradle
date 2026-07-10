@@ -1,0 +1,7 @@
+dependencies {
+    provided "org.develnext.jphp:jphp-runtime:${rootProject.ext.jphpVersion}"
+    provided "org.develnext.jphp:jphp-core:${rootProject.ext.jphpVersion}"
+    provided project(':jphp-gui-ext')
+
+    compile group: 'org.dyn4j', name: 'dyn4j', version: '3.2.1'
+}
