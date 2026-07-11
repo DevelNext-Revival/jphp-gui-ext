@@ -233,6 +233,15 @@ public class UXApplication extends BaseWrapper<Application> {
             //thread.setUncaughtExceptionHandler(buildUncaughtExceptionHandler(onStart.getEnvironment()));
 
             new Button();  // fix.
+
+            // Prime the primary Stage that JavaFX hands us here: onStart's PHP closure takes
+            // no args and never shows it, so it otherwise never gets shown at all. Without
+            // this, on macOS all subsequent secondary Stages (splash, main window, etc.) are
+            // created and even receive focus/frontmost state, but their windows never actually
+            // get composited by WindowServer. Harmless no-op on Windows/Linux.
+            stage.show();
+            stage.hide();
+
             try {
                 thread.setContextClassLoader(onStart.getEnvironment().scope.getClassLoader());
                 UXApplication.onStart.callAny(stage);

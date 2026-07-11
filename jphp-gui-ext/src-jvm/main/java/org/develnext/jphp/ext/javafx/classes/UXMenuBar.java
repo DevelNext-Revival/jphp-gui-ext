@@ -7,6 +7,7 @@ import org.develnext.jphp.ext.javafx.JavaFXExtension;
 import php.runtime.annotation.Reflection.Name;
 import php.runtime.annotation.Reflection.Property;
 import php.runtime.annotation.Reflection.Signature;
+import php.runtime.common.Constants;
 import php.runtime.env.Environment;
 import php.runtime.reflection.ClassEntity;
 
@@ -25,6 +26,11 @@ public class UXMenuBar extends UXControl {
                 getWrappedObject().setSkin(new FixMenuSkinBar(getWrappedObject()));
             }*/
         }
+
+        // Use the native mac menu bar (top of screen) instead of an in-window one by default.
+        if (Constants.OS_MAC) {
+            wrappedObject.setUseSystemMenuBar(true);
+        }
     }
 
     public UXMenuBar(Environment env, ClassEntity clazz) {
@@ -40,5 +46,9 @@ public class UXMenuBar extends UXControl {
     public void __construct() {
         __wrappedObject = new MenuBar();
         //getWrappedObject().setSkin(new FixMenuSkinBar(getWrappedObject()));
+
+        if (Constants.OS_MAC) {
+            getWrappedObject().setUseSystemMenuBar(true);
+        }
     }
 }
